@@ -31,3 +31,11 @@ This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://w
 ### Note about ES6
 
 Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future-proofing JavaScript code. As much as possible, try to maintain use of ES6 in any additional JavaScript you write.
+
+### SCSS
+
+If you wish to make changes to the SCSS file, a Sass Autocompiler needs to be installed.
+
+### Starting point
+
+The basis for this project was a starter kit which was supposed to be improved/extended with regard to Accessibility, Responsiveness and Offline functionalities
