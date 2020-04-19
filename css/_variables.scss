@@ -1,0 +1,25 @@
+
+// colors
+$orange: #dd8f70;
+$orange-light: lighten($orange, 20%);
+$blue: #5a6b9c;
+$beige: #f4eee6;
+$white: #fff;
+$blue-grey: #252831;
+
+// font related variables
+$letter-spacing: 0.05rem;
+
+
+// paddings & margins
+$nav-height: 70px;
+$nav-height-mobile: 50px;
+$breadcrumb-height: 30px;
+
+// breakpoints
+$phone: 768px;
+$tablet: 992px;
+$desktop: 1200px;
+
+// other
+$border-radius-base: 2px;

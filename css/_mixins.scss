@@ -1,0 +1,60 @@
+// mixins
+
+@mixin flexbox {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-flow: row wrap;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+
+@mixin flex-justify($direction) {
+	-webkit-box-pack: $direction;
+	-ms-flex-pack: $direction;
+	justify-content: $direction;
+}
+
+@mixin flex-align($direction) {
+	-webkit-box-align: $direction;
+	-ms-flex-align: $direction;
+	align-items: $direction;
+}
+
+@mixin flex-flow($type, $wrap) {
+	@if $type == column {
+	   -webkit-box-orient: vertical;
+	} @else {
+	   -webkit-box-orient: horizontal;
+	}
+ 	-webkit-box-direction: normal;
+	-ms-flex-flow: $type $wrap;
+	flex-flow: $type $wrap;
+}
+
+@mixin flex-order($number) {
+	-webkit-box-ordinal-group: $number;
+	-ms-flex-order: $number;
+	order: $number;
+}
+
+@mixin transition($parameters) {
+	-webkit-transition: $parameters;
+	transition: $parameters;
+}
+
+@mixin transform($parameter) {
+	-webkit-transform: $parameters;
+	transform: $parameters;
+}
+
+@mixin tagging($color) {
+	background-color: $color;
+	border-radius: 5px;
+	padding: 2px 15px;
+	text-transform: uppercase;
+	letter-spacing: $letter-spacing;
+	font-size: 14px;
+}

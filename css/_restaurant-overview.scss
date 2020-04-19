@@ -1,0 +1,96 @@
+@import "_mixins";
+@import "_variables";
+
+// map
+
+.content-overview {
+	margin-top: $nav-height;
+	#map-container {
+		height: 30vh;
+	}
+}
+// Filters
+
+.filter-options {
+  //background-color: $beige;
+	@include flexbox;
+  @include flex-align(center);
+	@include flex-justify(center);
+	padding-top: 20px;
+	.show {
+		color: $blue-grey;
+		font-size: 1rem;
+		margin: 0 20px;
+		@media (max-width: $phone) {
+			width: 100%;
+			text-align: center;
+		}
+	}
+	select {
+		background-color: $beige;
+		color: $blue;
+		border: 2px solid $blue;
+		font-size: 10pt;
+		height: 32px;
+		width: 180px;
+		margin-top: 5px;
+	}
+	.select-wrap {
+		margin: 10px;
+		@include flexbox;
+		@include flex-flow(column, wrap);
+	}
+	label {
+		text-transform: uppercase;
+		letter-spacing: $letter-spacing;
+		font-size: 11px;
+	}
+}
+
+
+// Restaurant Listing
+
+.restaurants-list {
+	@include flexbox;
+	@include flex-justify(center);
+  background-color: $beige;
+  margin: 0;
+  padding: 40px 3vw;
+	@media(max-width: $phone) {
+		padding: 40px 0;
+	}
+	.restaurant-wrap {
+		padding: 20px;
+	}
+	.restaurant-item {
+		background-color: $white;
+		margin: 15px;
+		width: 270px;
+		border-radius: 2px;
+		&:hover {
+			.restaurant-img {
+				opacity: 0.7;
+				@include transition(all 0.5s ease);
+			}
+		}
+	}
+	.restaurant-img {
+		background-color: $beige;
+		max-width: 100%;
+		min-height: 200px;
+		min-width: 100%;
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		@include transition(all 0.5s ease);
+	}
+	h2 {
+		font-size: 14pt;
+		margin-top: 0;
+	}
+	p {
+		margin: 0;
+		font-size: 11pt;
+		font-weight: 300;
+		color: $blue-grey;
+	}
+}

@@ -1,0 +1,159 @@
+// compileCompressed
+
+@import "_mixins";
+@import "_variables";
+@import "_restaurant-overview";
+@import "_restaurant-details";
+
+// global
+* {
+	font-family: 'IBM Plex Sans', sans-serif;
+	box-sizing: border-box;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+body {
+	background-color: $beige;
+	margin: 0;
+}
+
+h1, h2, h3 {
+	color: $blue;
+	font-weight: 500;
+}
+
+p, td {
+	font-weight: 300;
+	color: $blue-grey;
+}
+
+a {
+	color: $orange;
+	text-decoration: none;
+	font-weight: 700;
+	&:hover, &:focus {
+		color: $blue-grey;
+		text-decoration: none;
+	}
+}
+
+.btn {
+	background: none;
+	border: 2px solid $orange;
+	font-weight: 700;
+	color: $orange;
+	display: inline-block;
+	font-size: 8pt;
+	padding: 6px 18px;
+	text-align: center;
+	text-decoration: none;
+	position: relative;
+	text-transform: uppercase;
+	letter-spacing: 0.05rem;
+	margin-top: 30px;
+	@include transition(all 0.5s ease);
+	z-index: 1;
+	&:after {
+		position: absolute;
+		content: '';
+		width: 0;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-color: lighten($orange, 30%);
+		@include transition(all 0.5s ease);
+		z-index: -1;
+	}
+	&:hover {
+		background: none;
+		color: $blue;
+		border-color: $blue;
+		@include transition(all 0.5s ease);
+		&:after {
+			width: 100%;
+			@include transition(all 0.5s ease);
+		}
+	}
+}
+
+.footer {
+  background-color: $blue;
+  color: white;
+  font-size: 8pt;
+  letter-spacing: 1px;
+  padding: 25px;
+  text-align: center;
+  text-transform: uppercase;
+	bottom: 0;
+	width: 100%;
+	position: relative;
+}
+
+// nav + header
+
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+
+nav {
+  width: 100%;
+  height: $nav-height;
+  background-color: transparentize($white, 0.1);
+  @include flexbox;
+	@include flex-justify(center);
+	@include flex-align(center);
+	position: fixed;
+	z-index: 10000; // top map on scroll
+	top: 0;
+	border-bottom: 2px solid $blue;
+	@media(max-width: $phone) {
+		height: $nav-height-mobile;
+	}
+	h1 {
+		margin: 0;
+		text-align: center;
+	}
+	a {
+		color: $blue;
+		font-size: 14pt;
+		letter-spacing: $letter-spacing + 0.05rem;
+		text-transform: uppercase;
+	}
+}
+
+// breadcrumb
+.breadcrumb {
+	@include flexbox;
+	@include flex-flow(row, wrap);
+  padding: 5px 20px;
+  background-color: $orange-light;
+  font-size: 12px;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: $letter-spacing;
+  margin: $nav-height 0 0 0;
+	@media (max-width: $phone) {
+		margin-top: $nav-height-mobile;
+	}
+	width: 100%;
+	height: $breadcrumb-height;
+
+	// Add a slash symbol (/) before/behind each item
+	div + div:before {
+		padding: 8px;
+		color: $blue-grey;
+		content: "/\00a0";
+	}
+}
+
+// map global styles
+#map {
+	height: 100%;
+	width: 100%;
+	background-color: $beige;
+}

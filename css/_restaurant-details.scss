@@ -1,0 +1,93 @@
+@import "_mixins";
+@import "_variables";
+
+.content-details {
+	@include flexbox;
+	@include flex-flow(row, wrap);
+	margin-top: $nav-height + $breadcrumb-height;
+	@media(max-width: $phone) {
+		margin-top: $nav-height-mobile + $breadcrumb-height;
+	}
+
+	// map
+	.map-container-restaurant {
+		width: 100%;
+		height: 50vh;
+	}
+	@media(min-width: $desktop) {
+		.details-container {
+			width: 50%;
+		}
+		.map-container-restaurant {
+			width: 50%;
+			height: 100vh;
+			position: fixed;
+			right: 0;
+		}
+	}
+
+	// restaurant details
+	.details-container {
+		padding: 0 3vw;
+	}
+	.restaurant-name {
+		font-size: 20pt;
+		margin: 15px 0 30px;
+	}
+	.restaurant-img {
+		width: 80%;
+		border-radius: $border-radius-base;
+		margin: 0 auto;
+	}
+	.restaurant-hours {
+		border: 2px solid $white;
+		padding: 20px;
+		font-size: 14px;
+		td:first-of-type {
+			font-weight: 500;
+			padding-right: 20px;
+			text-align: right;
+		}
+	}
+	.restaurant-info {
+		@include flexbox;
+		@include flex-flow(row, wrap);
+		@include flex-align(center);
+	}
+	.restaurant-address {
+		margin: 10px;
+	}
+	.restaurant-cuisine {
+		@include tagging($orange-light);
+	}
+
+	// reviews
+	.reviews-list {
+		margin: 0;
+		padding: 0;
+	}
+	.review-item {
+		background-color: $white;
+		margin: 20px 0;
+		border-radius: $border-radius-base;
+	}
+	.review-head {
+		@include flexbox;
+		@include flex-flow(row, wrap);
+		border-bottom: 2px solid $blue;
+		padding: 0 30px;
+	}
+	.review-head p {
+		margin-right: 20px;
+	}
+	.name {
+		font-weight: 500;
+	}
+	.rating {
+		@include tagging($orange-light);
+	}
+	.review-body {
+		padding: 10px 30px;
+		font-size: 14px;
+	}
+}
