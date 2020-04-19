@@ -133,9 +133,9 @@ resetRestaurants = (restaurants) => {
  * Create all restaurants HTML and add them to the webpage.
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
-  const ul = document.querySelector('.restaurants-list');
+  const div = document.querySelector('.restaurants-list');
   restaurants.forEach(restaurant => {
-    ul.append(createRestaurantHTML(restaurant));
+    div.append(createRestaurantHTML(restaurant));
   });
   addMarkersToMap();
 }
@@ -171,6 +171,7 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
 	more.className = 'btn';
   more.innerHTML = 'View Details';
+	more.setAttribute('title', 'View details for ' + restaurant.name);
   more.href = DBHelper.urlForRestaurant(restaurant);
   wrap.append(more)
 

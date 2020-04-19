@@ -102,23 +102,29 @@ header {
 
 nav {
   width: 100%;
-  height: $nav-height;
-  background-color: transparentize($white, 0.1);
   @include flexbox;
 	@include flex-justify(center);
 	@include flex-align(center);
 	position: fixed;
 	z-index: 10000; // top map on scroll
 	top: 0;
-	border-bottom: 2px solid $blue;
-	@media(max-width: $phone) {
-		height: $nav-height-mobile;
+	.title-wrap {
+		height: $nav-height;
+		border-bottom: 2px solid $blue;
+		background-color: transparentize($white, 0.1);
+		@include flexbox;
+		@include flex-flow (row, wrap);
+		@include flex-justify(center);
+		@include flex-align(center);
+		width: 100%;
+		@media(max-width: $phone) {
+			height: $nav-height-mobile;
+		}
 	}
 	h1 {
 		margin: 0;
-		text-align: center;
 	}
-	a {
+	h1 a {
 		color: $blue;
 		font-size: 14pt;
 		letter-spacing: $letter-spacing + 0.05rem;
@@ -136,13 +142,14 @@ nav {
 	font-weight: 300;
 	text-transform: uppercase;
 	letter-spacing: $letter-spacing;
-  margin: $nav-height 0 0 0;
-	@media (max-width: $phone) {
-		margin-top: $nav-height-mobile;
-	}
 	width: 100%;
 	height: $breadcrumb-height;
-
+	a {
+		color: $blue;
+		&:hover {
+			color: $blue-grey;
+		}
+	}
 	// Add a slash symbol (/) before/behind each item
 	div + div:before {
 		padding: 8px;
