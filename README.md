@@ -24,8 +24,8 @@ To make the website accessible offline, a service worker was implemented. It is 
 
 ## How to run the application
 
-###Quickstart
+### Quickstart
 Access this [GitHub page](https://marlisa31.github.io/restaurant-reviews-app/) for immediate access to the app. The offline functionality can be checked by opening the developer tools > Application > Service Workers and checking the "Offline" checkbox.
 
-###Download
+### Download
 Download the repository. Create a server (for example with [atom-live-server](https://atom.io/packages/atom-live-server) if you work with Atom). Then change the DATABASE_URL() inside dbhelper.js according to your port. Just like on the Github page the offline functionality can be checked by opening the developer tools > Application > Service Workers and checking the "Offline" checkbox.
