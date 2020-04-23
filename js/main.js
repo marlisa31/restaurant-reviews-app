@@ -131,8 +131,8 @@ updateRestaurants = () => {
 resetRestaurants = (restaurants) => {
   // Remove all restaurants
   self.restaurants = [];
-  const ul = document.querySelector('.restaurants-list');
-  ul.innerHTML = '';
+  const div = document.querySelector('.restaurants-list');
+  div.innerHTML = '';
 
   // Remove all map markers
   if (self.markers) {
