@@ -1,49 +1,19 @@
-const cacheVersion = 'v1';
+const cacheVersion = 'v3';
 
 // installation of service worker
-self.addEventListener('install', function(event) {
-	// installation needs to wait until promise is finished
-	event.waitUntil(
-		caches
-			.open(cacheVersion)
-			.then(function(cacheVersion) {
-				// put all relevant files into the cache
-				cacheVersion.addAll([
-					'index.html',
-					'restaurant.html',
-					'css/styles.min.css',
-					'js/dbhelper.js',
-					'js/main.js',
-					'js/restaurant_info.js',
-					'data/restaurants.json',
-					'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
-					'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
-					'img/1.jpg',
-					'img/2.jpg',
-					'img/3.jpg',
-					'img/4.jpg',
-					'img/5.jpg',
-					'img/6.jpg',
-					'img/7.jpg',
-					'img/8.jpg',
-					'img/9.jpg',
-					'img/10.jpg'
-				])
-			})
-			// force waiting service worker to become the active one
-			.then(() => self.skipWaiting())
-	);
+self.addEventListener('install', (event) => {
+
 });
 
 // activate service worker and update cache
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', (event) => {
 	// remove old caches
 	event.waitUntil(
-		caches.keys().then(function(cacheVersion) {
+		caches.keys().then((cacheVersion) => {
 			return Promise.all(
 				// loop through all cache versions and remove all except the current version
-				cacheVersion.filter(function(loopVersion) {
-					if(loopVersion != cacheVersion) {
+				cacheVersion.filter((loopVersion) => {
+					if(loopVersion !== cacheVersion) {
 							const deleted = caches.delete(loopVersion);
 							return deleted;
 					}
@@ -53,11 +23,25 @@ self.addEventListener('activate', function(event) {
 	)
 });
 
-// fetch what is inside the cache
-self.addEventListener('fetch', function(event) {
+// store data inside cache and fetch it
+self.addEventListener('fetch', (event) => {
+	console.log(event.request.url);
 	event.respondWith(
-		fetch(event.request).catch(function() {
-			return caches.match(event.request)
-		})
+		caches
+			.open(cacheVersion)
+			.then((cache) => {
+
+				// check if ressource is available through network
+				return fetch(event.request)
+				.then((response) => {
+
+					// add copy to the cache when network data is accessed
+					cache.put(event.request, response.clone());
+					return response;
+			 	})
+				// search for matching cache ressource if no network connection available
+				.catch(() => caches.match(event.request);
+				})
+			})
 	)
 })

@@ -1,11 +1,11 @@
 // Include service worker
 // check if service worker is supported
 if('serviceWorker' in navigator) {
-	window.addEventListener('load', function() {
+	window.addEventListener('load', () => {
 		navigator.serviceWorker
 			.register('./sw.js', { scope: './'})
 			.then()
-			.catch(function(error) {
+			.catch((error) => {
 				console.log('Service worker reports the following error: ' + error)
 			});
 	})
