@@ -25,7 +25,6 @@ self.addEventListener('activate', (event) => {
 
 // store data inside cache and fetch it
 self.addEventListener('fetch', (event) => {
-	console.log(event.request.url);
 	event.respondWith(
 		caches
 			.open(cacheVersion)
@@ -40,7 +39,12 @@ self.addEventListener('fetch', (event) => {
 					return response;
 			 	})
 				// search for matching cache ressource if no network connection available
-				.catch(() => caches.match(event.request));
+				.catch(() => {
+					caches.match(event.request)
+					.catch((error) => {
+						 console.log('This page is not available offline.');
+					})
+				});
 
 			})
 	)
