@@ -40,7 +40,7 @@ self.addEventListener('fetch', (event) => {
 					return response;
 			 	})
 				// search for matching cache ressource if no network connection available
-				.catch(() => caches.match(event.request);
+				.catch(() => caches.match(event.request));
 				})
 			})
 	)
