@@ -1,4 +1,5 @@
 // Include service worker
+
 // check if service worker is supported
 if('serviceWorker' in navigator) {
 	window.addEventListener('load', () => {
@@ -18,7 +19,7 @@ var newMap
 var markers = []
 
 
-// Fetch neighborhoods and cuisines as soon as the page is loaded.
+// Fetch neighborhoods and cuisines as soon as the page is loaded
 
 document.addEventListener('DOMContentLoaded', (event) => {
   initMap(); // added
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
-// Fetch all neighborhoods and set their HTML.
+// Fetch all neighborhoods and set their HTML
 
 fetchNeighborhoods = () => {
   DBHelper.fetchNeighborhoods((error, neighborhoods) => {
@@ -41,7 +42,7 @@ fetchNeighborhoods = () => {
 }
 
 
-// Set neighborhoods HTML.
+// Set neighborhoods HTML
 
 fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
   const select = document.querySelector('.neighborhoods-select');
@@ -192,7 +193,7 @@ createRestaurantHTML = (restaurant) => {
 }
 
 
-// Add markers for current restaurants to the map.
+// Add markers for current restaurants to the map
 
 addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
