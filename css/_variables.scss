@@ -1,5 +1,6 @@
 
-// colors
+// ________ colors ________ //
+
 $orange: #9a6868;
 $orange-light: lighten($orange, 32%);
 $blue: #5a6b9c;
@@ -7,19 +8,26 @@ $beige: #f4eee6;
 $white: #fff;
 $blue-grey: #252831;
 
-// font related variables
+
+// ________ font related variables ________ //
+
 $letter-spacing: 0.05rem;
 
 
-// paddings & margins
+// ________ paddings & margins ________ //
+
 $nav-height: 70px;
 $nav-height-mobile: 50px;
 $breadcrumb-height: 30px;
 
-// breakpoints
+
+// ________ breakpoints ________ //
+
 $phone: 768px;
 $tablet: 992px;
 $desktop: 1200px;
 
-// other
+
+// ________ other ________ //
+
 $border-radius-base: 2px;

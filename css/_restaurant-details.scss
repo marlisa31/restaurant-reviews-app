@@ -9,7 +9,8 @@
 		margin-top: $nav-height-mobile + $breadcrumb-height;
 	}
 
-	// map
+	// ________ map ________ //
+
 	.map-container-restaurant {
 		width: 100%;
 		height: 50vh;
@@ -26,7 +27,8 @@
 		}
 	}
 
-	// restaurant details
+	// ________ restaurant details ________ //
+
 	.details-container {
 		padding: 0 3vw;
 	}
@@ -61,7 +63,8 @@
 		@include tagging($orange-light);
 	}
 
-	// reviews
+	// ________ reviews ________ //
+	
 	.reviews-list {
 		margin: 0;
 		padding: 0;

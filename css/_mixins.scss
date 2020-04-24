@@ -1,3 +1,6 @@
+
+	// ________ flexbox ________ //
+
 @mixin flexbox {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -38,6 +41,9 @@
 	order: $number;
 }
 
+
+// ________ transition & transform ________ //
+
 @mixin transition($parameters) {
 	-webkit-transition: $parameters;
 	transition: $parameters;
@@ -47,6 +53,9 @@
 	-webkit-transform: $parameters;
 	transform: $parameters;
 }
+
+
+	// ________ other ________ //
 
 @mixin tagging($color) {
 	background-color: $color;

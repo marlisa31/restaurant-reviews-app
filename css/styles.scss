@@ -5,7 +5,9 @@
 @import "_restaurant-overview";
 @import "_restaurant-details";
 
-// global
+
+// ________ global ________ //
+
 * {
 	font-family: 'IBM Plex Sans', sans-serif;
 	box-sizing: border-box;
@@ -38,6 +40,9 @@ a {
 		text-decoration: none;
 	}
 }
+
+
+// ________ btn ________ //
 
 .btn {
 	background: none;
@@ -78,7 +83,8 @@ a {
 	}
 }
 
-// nav + header
+
+// ________ nav + header ________ //
 
 header {
 	position: fixed;
@@ -119,7 +125,8 @@ nav {
 	}
 }
 
-// breadcrumb
+// ________ breadcrumb ________ //
+
 .breadcrumb {
 	@include flexbox;
 	@include flex-flow(row, wrap);
@@ -137,7 +144,7 @@ nav {
 			color: $blue-grey;
 		}
 	}
-	// Add a slash symbol (/) before/behind each item
+	// Add a slash symbol (/) before and behind each item
 	div + div:before {
 		padding: 8px;
 		color: $blue-grey;
@@ -145,12 +152,8 @@ nav {
 	}
 }
 
-// map global styles
-#map {
-	height: 100%;
-	width: 100%;
-	background-color: $beige;
-}
+
+// ________ footer ________ //
 
 .footer {
   background-color: $blue;
@@ -169,4 +172,13 @@ nav {
 			color: $blue-grey;
 		}
 	}
+}
+
+
+// ________ map global styles ________ //
+
+#map {
+	height: 100%;
+	width: 100%;
+	background-color: $beige;
 }
