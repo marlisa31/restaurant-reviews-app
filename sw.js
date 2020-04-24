@@ -40,10 +40,12 @@ self.addEventListener('fetch', (event) => {
 			 	})
 				// search for matching cache ressource if no network connection available
 				.catch(() => {
+					//console.log('here!');
 					caches.match(event.request)
+					/*
 					.catch((error) => {
-						 console.error('This page is not available offline.');
-					})
+						 console.log('This page is not available offline.' + error);
+					}) */
 				});
 
 			})

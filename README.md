@@ -17,9 +17,10 @@ The app was made responsive by changing the initial fixed layout into a layout t
 
 ### Accessibility
 To ensure that the app is accessible for a wide range of users, a few accessibility features were implemented:
-- Labels were added to select fields to describe the fields
+- labels were added to select fields to describe the fields
 - `alt`-Tags were added to all images with a description of each image
 - `aria`- Labels were added where it made sense
+- used colors were adjusted so that they pass the Lighthouse Accessibility test in Chrome
 
 ### Offline caching
 To make the website accessible offline, a service worker was implemented. It is included in `main.js` and implemented in the file `sw.js`.
