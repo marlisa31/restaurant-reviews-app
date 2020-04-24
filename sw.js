@@ -42,7 +42,7 @@ self.addEventListener('fetch', (event) => {
 				.catch(() => {
 					caches.match(event.request)
 					.catch((error) => {
-						 console.log('This page is not available offline.');
+						 console.error('This page is not available offline.');
 					})
 				});
 
