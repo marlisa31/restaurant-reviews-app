@@ -1,7 +1,7 @@
 @import "_mixins";
 @import "_variables";
 
-// map
+// ________ map ________ //
 
 .content-overview {
 	margin-top: $nav-height;
@@ -9,7 +9,8 @@
 		height: 30vh;
 	}
 }
-// Filters
+
+// ________ filters ________ //
 
 .filter-options {
   //background-color: $beige;
@@ -48,7 +49,7 @@
 }
 
 
-// Restaurant Listing
+// ________  restaurant listing ________ //
 
 .restaurants-list {
 	@include flexbox;
