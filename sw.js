@@ -9,15 +9,17 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
 	// remove old caches
 	event.waitUntil(
-		caches.keys().then((cacheVersion) => {
-			return Promise.all(
-				// loop through all cache versions and remove all except the current version
-				cacheVersion.filter((loopVersion) => {
-					if(loopVersion !== cacheVersion) {
-							const deleted = caches.delete(loopVersion);
-							return deleted;
-					}
-				})
+		caches
+			.keys()
+			.then((cacheVersion) => {
+				return Promise.all(
+					// loop through all cache versions and remove all except the current version
+					cacheVersion.filter((loopVersion) => {
+						if(loopVersion !== cacheVersion) {
+								const deleted = caches.delete(loopVersion);
+								return deleted;
+						}
+					})
 			)
 		})
 	)
@@ -25,6 +27,11 @@ self.addEventListener('activate', (event) => {
 
 // store data inside cache and fetch it
 self.addEventListener('fetch', (event) => {
+
+	// ignore events that are not GET events
+	if (event.request.method !== 'GET') {
+		return
+	}
 	event.respondWith(
 		caches
 			.open(cacheVersion)
@@ -40,12 +47,10 @@ self.addEventListener('fetch', (event) => {
 			 	})
 				// search for matching cache ressource if no network connection available
 				.catch(() => {
-					//console.log('here!');
 					caches.match(event.request)
-					/*
 					.catch((error) => {
 						 console.log('This page is not available offline.' + error);
-					}) */
+					})
 				});
 
 			})
