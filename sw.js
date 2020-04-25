@@ -11,12 +11,12 @@ self.addEventListener('activate', (event) => {
 	event.waitUntil(
 		caches
 			.keys()
-			.then((cacheVersion) => {
+			.then((cacheKeys) => {
 				return Promise.all(
 					// loop through all cache versions and remove all except the current version
-					cacheVersion.filter((loopVersion) => {
-						if(loopVersion !== cacheVersion) {
-								const deleted = caches.delete(loopVersion);
+					cacheKeys.map((cacheKey) => {
+						if(cacheKey !== cacheVersion) {
+								const deleted = caches.delete(cacheKey);
 								return deleted;
 						}
 					})
@@ -52,7 +52,6 @@ self.addEventListener('fetch', (event) => {
 						 console.log('This page is not available offline.' + error);
 					})
 				});
-
 			})
 	)
 })
