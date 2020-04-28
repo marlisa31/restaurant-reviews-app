@@ -1,4 +1,4 @@
-const cacheVersion = 'v3';
+const cacheVersion = 'v1';
 
 // installation of service worker
 self.addEventListener('install', (event) => {
@@ -13,7 +13,8 @@ self.addEventListener('activate', (event) => {
 			.keys()
 			.then((cacheKeys) => {
 				return Promise.all(
-					// loop through all cache versions and remove all except the current version
+
+					// loop through all cache keys and remove all except the current version
 					cacheKeys.map((cacheKey) => {
 						if(cacheKey !== cacheVersion) {
 								const deleted = caches.delete(cacheKey);
@@ -32,26 +33,33 @@ self.addEventListener('fetch', (event) => {
 	if (event.request.method !== 'GET') {
 		return
 	}
+
 	event.respondWith(
 		caches
 			.open(cacheVersion)
-			.then((cache) => {
+			.then(function(cache) {
+				return cache
+					// find matching resource
+					.match(event.request)
+					.then(function(response) {
+						// if resource is inside cache, return it from cache
+						if(response) {
+							return response;
 
-				// check if ressource is available through network
-				return fetch(event.request)
-				.then((response) => {
-
-					// add copy to the cache when network data is accessed
-					cache.put(event.request, response.clone());
-					return response;
-			 	})
-				// search for matching cache ressource if no network connection available
-				.catch(() => {
-					caches.match(event.request)
-					.catch((error) => {
-						 console.log('This page is not available offline.' + error);
+						// else fetch resource from the network
+						} else {
+							return fetch(event.request)
+								.then(function(networkResponse) {
+									// put networkResponse into cache for future offline caching
+									cache.put(event.request, networkResponse.clone());
+									return networkResponse;
+								});
+						}
 					})
-				});
+					// show error display offline page if page is not in cache and network is not available
+					.catch(function(error) {
+						console.log('You are currently offline. Please connect to the internet. The following error occured: ' + error);
+					});
 			})
 	)
 })
