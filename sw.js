@@ -59,6 +59,8 @@ self.addEventListener('fetch', (event) => {
 					.catch(function (error) {
 							// handle exceptions
 							console.error("The following error occured: ", error);
+
+							// show offline page if no connection is available and nothing is inside cache
 							return new Response(
 									"<h1>No connection</h1><p>You are currently offline. Please connect to the internet to view this page.</p>",
 									{
