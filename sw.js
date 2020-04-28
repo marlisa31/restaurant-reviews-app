@@ -56,10 +56,15 @@ self.addEventListener('fetch', (event) => {
 								});
 						}
 					})
-					// show error display offline page if page is not in cache and network is not available
-					.catch(function(error) {
-						return console.log('You are currently offline. Please connect to the internet. The following error occured: ' + error);
-
+					.catch(function (error) {
+							// handle exceptions
+							console.error("The following error occured: ", error);
+							return new Response(
+									"<h1>No connection</h1><p>You are currently offline. Please connect to the internet to view this page.</p>",
+									{
+											headers: { "Content-Type": "text/html" },
+									},
+							);
 					});
 			})
 	)
