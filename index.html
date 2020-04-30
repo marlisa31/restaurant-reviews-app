@@ -22,7 +22,7 @@
 
 	  <main class="maincontent content-overview">
 	    <section id="map-container" tabindex="-1">
-	      <div id="map" class="map-main" alt="map with markers for restaurants" tabindex="-1"></div>
+	      <div id="map" class="map-main" alt="map with markers for restaurants" tabindex="-1" role="presentation"></div>
 	    </section>
 	    <section class="restaurant-results">
 	      <div class="filter-options">
@@ -30,14 +30,14 @@
 
 						<div class="select-wrap neighborhood-select-wrap">
 							<label for="neighborhoods-select"> Neighborhoods </label>
-			        <select class="neighborhoods-select" id ="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+			        <select class="neighborhoods-select" id ="neighborhoods-select" aria-label="Select the neighborhood" name="neighborhoods" onchange="updateRestaurants()">
 			          <option value="all">All Neighborhoods</option>
 			        </select>
 						</div>
 
 						<div class="select-wrap cuisines-select-wrap">
 							<label for="cuisines-select"> Cuisines</label>
-			        <select class="cuisines-select" id ="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+			        <select class="cuisines-select" id ="cuisines-select" aria-label="Select the cuisine" name="cuisines" onchange="updateRestaurants()">
 			          <option value="all">All Cuisines</option>
 			        </select>
 						</div>
